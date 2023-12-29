@@ -1,4 +1,4 @@
-<?php include '../dbconnect.php';
+<?php include 'dbconnect.php';
 session_start();
 $loggedin = false;
 if(!isset($_SESSION['s_logged']) && $_SESSION['s_loggedin'] != true)

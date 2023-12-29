@@ -104,7 +104,7 @@
       }
     </script>
 <?php
-    include '../dbconnect.php';
+    include 'dbconnect.php';
 
 ?>
 </body>

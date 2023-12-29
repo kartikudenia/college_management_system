@@ -3,8 +3,8 @@ session_start();
 $loggedin = false;
 if(!isset($_SESSION['s_loggedin']) && $_SESSION['s_loggedin'] != true)
 {
-    header("location: login_rhinobase.php");
-    exit;
+    header("location: login_student.php");
+    exit();
 } 
 ?>
 <!DOCTYPE html>

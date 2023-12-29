@@ -1,7 +1,13 @@
 <?php 
 
-include '../dbconnect.php';
+include 'dbconnect.php';
 session_start();
+$loggedin = false;
+if(!isset($_SESSION['s_loggedin']) && $_SESSION['s_loggedin'] != true)
+{
+    header("location: login_student.php");
+    exit();
+} 
 // Check if the form is submitted
 if(isset($_POST['form_submitted'])) {
     // Retrieve form data without sanitization (not recommended for security reasons)

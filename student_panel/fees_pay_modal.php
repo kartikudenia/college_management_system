@@ -1,4 +1,4 @@
-<?php include '../dbconnect.php';?>
+<?php include 'dbconnect.php';?>
 
 
 <div class="modal fade" id="fees_pay_modal" tabindex="-1" role="dialog" aria-labelledby="verticalModalLabel"

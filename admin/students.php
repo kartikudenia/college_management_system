@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $hash_pass=password_hash($pass,PASSWORD_DEFAULT);
             $sql1="INSERT INTO `fees_table` (`f_id`, `f_name`,`f_fees`, `f_1`, `f_2`, `f_3`, `f_4`, `f_5`) VALUES (NULL, '$name','$fees', 'Not Paid', 'Not Paid', 'Not Paid', 'Not Paid', 'Not Paid')";  
             $new_imgname = time().$img_name;
-            if(move_uploaded_file($tmp_name,"uploads/s_images/".$new_imgname)){ 
+            if(move_uploaded_file($tmp_name,"../uploads/s_images/".$new_imgname)){ 
             $sql = "INSERT INTO `student_table` (`s_id`,`s_name`,`s_mail`,`s_pass`, `s_dept`,`s_semister`,`s_Session`,`s_fees`,`s_gender`,`s_photo`) VALUES (NULL, '$name','$mail','$hash_pass','$department','$semister', '$session', '$fees','$gender','$new_imgname')";
 
             if (mysqli_query($conn, $sql) && mysqli_query($conn, $sql1)) {
