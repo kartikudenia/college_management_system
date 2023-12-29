@@ -6,7 +6,7 @@ session_start();
 $loggedin = false;
 if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] != true)
 {
-    header("location: index.php");
+    header("location: ../index.php");
     exit;
 }
 $error_message = ""; // Initialize the error message variable
@@ -23,7 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $gender = $_POST['s_gender'];
         $mail = $_POST['s_mail'];
         $pass = $_POST['s_pass'];
-
+        
+        $img_name = $_FILES['s_photo']['name']; // uploaded image name
+        $tmp_name = $_FILES['s_photo']['tmp_name']; // temporary name used to save file
         // Check if a session is selected
         if (empty($session)) {
             $error_message = "Please select a session";
@@ -42,9 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         else{
             
+
             $hash_pass=password_hash($pass,PASSWORD_DEFAULT);
             $sql1="INSERT INTO `fees_table` (`f_id`, `f_name`,`f_fees`, `f_1`, `f_2`, `f_3`, `f_4`, `f_5`) VALUES (NULL, '$name','$fees', 'Not Paid', 'Not Paid', 'Not Paid', 'Not Paid', 'Not Paid')";  
-            $sql = "INSERT INTO `student_table` (`s_id`,`s_name`,`s_mail`,`s_pass`, `s_dept`,`s_semister`,`s_Session`,`s_fees`,`s_gender`) VALUES (NULL, '$name','$mail','$hash_pass','$department','$semister', '$session', '$fees','$gender')";
+            $new_imgname = time().$img_name;
+            if(move_uploaded_file($tmp_name,"uploads/s_images/".$new_imgname)){ 
+            $sql = "INSERT INTO `student_table` (`s_id`,`s_name`,`s_mail`,`s_pass`, `s_dept`,`s_semister`,`s_Session`,`s_fees`,`s_gender`,`s_photo`) VALUES (NULL, '$name','$mail','$hash_pass','$department','$semister', '$session', '$fees','$gender','$new_imgname')";
 
             if (mysqli_query($conn, $sql) && mysqli_query($conn, $sql1)) {
                 header("Location: students.php"); // Replace with the appropriate URL
@@ -55,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Error during insertion
                 echo "Error: " . mysqli_error($conn);
             }
+        }
         }
     }
 }
@@ -156,6 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addstudentmodal">
                 Add Students
             </button>
+            <a href="demo.php">Add</a>
         </div>
 
     </div>

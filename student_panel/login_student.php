@@ -30,6 +30,8 @@
           $_SESSION['sname'] = $rows['s_name'];
           $_SESSION['sdept'] = $rows['s_dept'];
           $_SESSION['ssemister'] = $rows['s_semister'];
+          $_SESSION['sid'] = $rows['s_id'];
+          $_SESSION['sphoto'] = $rows['s_photo'];
           header("location: dashboard.php");
         }
         else
@@ -61,7 +63,7 @@
 </head>
 <body>
       <?php
-      if (isset($showError)){ 
+      if ($showError){ 
         echo '
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Error ! </strong>'.$showError.'
@@ -72,8 +74,7 @@
         <div class="inner_box">
             <div class="demo">
                 <!-- <img src="../images/logo.webp" alt="eroor accourred"> -->
-                <span>EduPlus
-                </span>
+                <span>EduPlus</span>
             </div>
             <header class="login_header">
                 <h2>Login to your student account</h2>
@@ -87,8 +88,7 @@
                     <p>
                         <label for="password">Password</label>
                         <input type="password" name="pass" id="pswrd" placeholder="Enter your password" required>
-                        <img src="images/visible.png" alt="error" onclick="toggleVisibility()" id="eye">
-                          
+                        <img src="../images/visible.png" alt="error" onclick="toggleVisibility()" id="eye">
                     </p>
                     <p>
                         <input type="submit" value="Login" id="submit">
@@ -96,11 +96,10 @@
                 </form>
             </main>
             <footer class="login_footer">
-                <p>Don't have an account ? <a href="#">SignUp</a></p>
+                <p>Admin Account login<a href="../index.php">Login</a></p>
             </footer>
         </div>  
-        </div>
-       
+    </div>
 <script>  
     function toggleVisibility() {  
       var getPasword = document.getElementById("pswrd"); 
@@ -115,6 +114,5 @@
     }  
     </script>   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
 </body>
 </html>

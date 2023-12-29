@@ -116,7 +116,7 @@ if(isset($_POST['form_submitted'])) {
           <?php
 // Loop through the installments and display them dynamically
 
-$sql1 = "SELECT * FROM `fees_table`";
+$sql1 = "SELECT * FROM `fees_table` where f_id = ".$_SESSION['sid'];
 $result = mysqli_query($conn, $sql1);
 
 while ($row = mysqli_fetch_assoc($result)) {

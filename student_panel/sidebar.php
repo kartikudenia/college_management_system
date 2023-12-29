@@ -38,7 +38,8 @@
       <!-- <box-icon type='solid' name='bell'></box-icon> -->
       <i class='bx bxs-bell'></i>
       <div class="user">
-        <img src="../images/user.png" alt="">
+      <img src="<?php echo "../uploads/s_images/".$_SESSION['sphoto'] ?>"alt="" />
+                
       </div>
     </div>
     <div class="sidebar_">
@@ -79,7 +80,7 @@
         </ul>
         <?php } ?>
             <div class="profile-details">
-                <img src="../images/user.png" alt="" />
+                <img src="<?php echo "../uploads/s_images/".$_SESSION['sphoto'] ?>"alt="" />
                 <div class="profile_name">
                   <span><?php echo $_SESSION['sname']; ?></span>
                   <a href="logout_student.php" class="btn_ ">

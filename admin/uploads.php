@@ -4,7 +4,7 @@ session_start();
   $loggedin = false;
   if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == false)
   {
-    header("location: index.php");
+    header("location: ../index.php");
     exit;
   }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

@@ -12,7 +12,7 @@
             <div class="modal-body">
                 <!-- Modal content goes here -->
                 <!-- jello -->
-                <form action="/rhinobase/students.php" method="post">
+                <form action="students.php" method="post" enctype="multipart/form-data">
                     <!-- password input -->
                     <input type="hidden" name="s_pass" value="student2023"> <!-- Add this submit button -->
                     <input type="hidden" name="form_submitted" value="1"> <!-- Add this submit button -->
@@ -65,6 +65,10 @@
                     <div class="mb-3">
                         <label for="Fees" class="form-label">Fees</label>
                         <input type="text" name="s_fees" class="form-control" id="feeDisplay"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Photo</label>
+                        <input class="form-control" type="file" name="s_photo" id="" required>
                     </div>
                     <div class="mb-3">
                         <label for="gender" class="form-label">Gender</label>

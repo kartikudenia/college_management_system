@@ -25,7 +25,8 @@
   top:0;
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
+  border-radius: 50%;
 
       }
       .topbar_{
@@ -236,6 +237,7 @@ background-color: #3498db;
   height: 60px;
   width: 60px;
   /* margin: 10px; */
+  border-radius: 50%;
 }
 .sidebar_ .profile-details .profile_name{
   color: black; 

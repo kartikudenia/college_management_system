@@ -1,5 +1,11 @@
 <?php include 'dbconnect.php';
 session_start();
+$loggedin = false;
+if(!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] != true)
+{
+    header("location: ../index.php");
+    exit();
+}
 ?>
 <?php
 
@@ -105,7 +111,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Table</title>
     <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/time_table.css">
+    <link rel="stylesheet" href="../css/time_table.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">

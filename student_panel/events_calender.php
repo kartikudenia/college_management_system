@@ -31,6 +31,44 @@ if(!isset($_SESSION['s_loggedin']) && $_SESSION['s_loggedin'] != true)
         <script src="../calender/evo-calendar.js"></script>
         <script src="../calender/evo-calendar.min.js"></script>
         <script>
+             <?php
+$sql = "SELECT * FROM events_data";
+$result = $conn->query($sql);
+
+$events = array();
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        // Convert the database date format to the desired format
+        $eventDate = date('d F Y', strtotime($row['event_date']));
+
+        $event = array(
+            'id' => 'event_' . $row['id'], // Use a unique identifier for the event
+            'name' => $row['event_name'],
+            'date' => $eventDate, // Format the date as "10 September 2023"
+            'type' => 'event',
+            'color' => '#63d867'
+        );
+
+        // Add event to the events array
+        $events[] = $event;
+    }
+}
+
+
+// Close the database connection
+$conn->close();
+?>
+
+$('#calendar').evoCalendar();
+
+// Assuming you have the events array generated in PHP
+var events = <?php echo json_encode($events); ?>;
+
+// Loop through events and add them to the calendar
+for (var i = 0; i < events.length; i++) {
+    $('#calendar').evoCalendar('addCalendarEvent', events[i]);
+}
             // $('#calendar').evoCalendar({
             //     'eventListToggler' : false,
             //     'sidebarToggler' : false,

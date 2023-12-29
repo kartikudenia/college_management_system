@@ -5,12 +5,12 @@
     session_start();
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         // Redirect to the dashboard or another authorized page
-        header("Location: sidebar.php");
+        header("Location: admin/sidebar.php");
         exit;
     }
   if($_SERVER['REQUEST_METHOD']=='POST')
   {
-    require "dbconnect.php";
+    require "admin/dbconnect.php";
 
     $email = $_POST['email'];
     $password = $_POST['pass'];
@@ -28,7 +28,7 @@
           session_start();
           $_SESSION['loggedin'] = true;
           $_SESSION['name'] = $rows['a_name'];
-          header("location: sidebar.php");
+          header("location: admin/sidebar.php");
         }
         else
         {
@@ -58,7 +58,7 @@
 </head>
 <body>
       <?php
-      if (isset($showError)){ 
+      if ($showError){ 
         echo '
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Error ! </strong>'.$showError.'
@@ -92,7 +92,7 @@
                 </form>
             </main>
             <footer class="login_footer">
-                <p>Don't have an account ? <a href="#">SignUp</a></p>
+                <p>Login as Student Account <a href="student_panel/login_student.php">Login</a></p>
             </footer>
         </div>  
     </div>
